@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniPact | The Campus Activation OS</title>
+    <meta name="description" content="UniPact replaces broken sponsorship models with performance-based bounties. Connecting elite student organizations with forward-thinking corporate brands.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo-link">
+                <img src="logo.png" alt="UniPact Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <button class="nav-btn" onclick="scrollToSection('club-section')">For Clubs</button>
+                <button class="nav-btn" onclick="scrollToSection('brand-section')">For Brands</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <div class="hero-content">
+                <div class="badge">Next-Gen Campus Sponsorships</div>
+                <h1 class="headline">The Campus <span class="text-gradient">Activation OS.</span></h1>
+                <p class="sub-headline">
+                    We replace broken sponsorship models with performance-based bounties. Connecting elite student organizations with forward-thinking corporate brands.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('club-section')">I am a Student Club</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('brand-section')">I am a Corporate Brand</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Split Layout for Forms -->
+        <div class="sections-wrapper container">
+            <!-- Brand Section -->
+            <section id="brand-section" class="portal-section brand-portal glass-card">
+                <div class="portal-header">
+                    <h2>Stop Begging for <span class="text-gradient">Campus Sponsorships.</span></h2>
+                    <h3>For Brands: Run High-Yield Campus Campaigns</h3>
+                    <p>Stop paying for standard campus logo placements that yield zero trackable ROI. UniPact lets you deploy hyper-local, performance-based Bounties directly to verified student organizations.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h4>Trackable ROI</h4>
+                        <p>Only pay when specific milestones are met (e.g., app downloads, foot traffic, product samples distributed).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h4>Verified Execution</h4>
+                        <p>Every milestone is secured by a digital ledger of proof—no more ghosted deliverables.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h4>Direct Access</h4>
+                        <p>Reach students organically through the leaders they already trust.</p>
+                    </div>
+                </div>
+
+                <div class="form-container mt-auto">
+                    <h4>Brand Application Form</h4>
+                    <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
+                        <input type="hidden" name="lead_type" value="Corporate_Leads">
+                        <div class="input-group">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" id="companyName" name="company_name" required placeholder="Acme Corp">
+                        </div>
+                        <div class="input-group">
+                            <label for="contactPerson">Contact Person & Designation</label>
+                            <input type="text" id="contactPerson" name="contact_person" required placeholder="Jane Doe, VP of Marketing">
+                        </div>
+                        <div class="input-group">
+                            <label for="corpEmail">Corporate Email Address</label>
+                            <input type="email" id="corpEmail" name="corp_email" required placeholder="jane@acmecorp.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="marketingGoal">Primary Campus Marketing Goal</label>
+                            <div class="select-wrapper">
+                                <select id="marketingGoal" name="marketing_goal" required>
+                                    <option value="" disabled selected>Select a goal...</option>
+                                    <option value="foot-traffic">Drive Foot Traffic</option>
+                                    <option value="app-downloads">App Downloads</option>
+                                    <option value="brand-awareness">Brand Awareness</option>
+                                    <option value="talent-recruitment">Talent Recruitment</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Request Demo & Pilot Access</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Club Section -->
+            <section id="club-section" class="portal-section club-portal glass-card">
+                <div class="portal-header">
+                    <h2>UniPact is the new OS for <span class="text-gradient">university student clubs.</span></h2>
+                    <p>Execute your events, claim corporate bounties, and build a verified execution portfolio.</p>
+                    <div class="alert-box">
+                        <span class="pulse-dot"></span>
+                        We are currently selecting 20 clubs for our closed Beta.
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4>Predictable Funding</h4>
+                        <p><strong>Stop selling overpriced merchandise.</strong><br>Claim direct corporate bounties by executing clear, pre-defined milestones for top brands. Fund your community impact without burdening your fellow students.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📜</div>
+                        <h4>Verified Portfolios</h4>
+                        <p><strong>Prove your competence.</strong><br>Every successful event builds a permanent, digital ledger of your execution skills. Turn your club activities into a verified e-resume that top-tier employers trust.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Zero Bureaucracy</h4>
+                        <p><strong>Focus on impact, not paperwork.</strong><br>Use our automated proposal engine to instantly generate perfectly formatted university documents. Say goodbye to endless margin errors and formatting rejections.</p>
+                    </div>
+                </div>
+
+                <div class="form-container mt-auto">
+                    <h4>Student Club Application</h4>
+                    <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
+                        <input type="hidden" name="lead_type" value="Student_Leads">
+                        <div class="input-group">
+                            <label for="studentName">Your Name (Required)</label>
+                            <input type="text" id="studentName" name="student_name" required placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="universityClub">Your University/Club (Required)</label>
+                            <input type="text" id="universityClub" name="university_club" required placeholder="Stanford CS Club">
+                        </div>
+                        <div class="input-group">
+                            <label for="studentEmail">Your Email Address (Required)</label>
+                            <input type="email" id="studentEmail" name="student_email" required placeholder="john@university.edu">
+                        </div>
+                        <div class="input-group">
+                            <label for="whatsappNumber">WhatsApp Number (Optional - For faster Beta access)</label>
+                            <input type="tel" id="whatsappNumber" name="whatsapp_number" placeholder="+1 234 567 8900">
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-block">Apply for the Beta</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 UniPact. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: sectionTop - navHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>

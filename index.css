@@ -831,6 +831,12 @@ a {
     color: var(--white);
 }
 
+.company-section .input-group select {
+    /* Tells the browser to draw the native dropdown popup (which CSS
+       otherwise can't style) in dark colors instead of stark white. */
+    color-scheme: dark;
+}
+
 .company-section .input-group input::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }

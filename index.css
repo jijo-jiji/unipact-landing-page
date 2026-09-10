@@ -1143,6 +1143,52 @@ footer {
     padding: 3rem 0 2.5rem;
 }
 
+.footer-contacts {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.footer-contact-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.2rem;
+}
+
+.footer-contact-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact-email {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--cyan-deep);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 24px;
+}
+
+.footer-contact-email:hover {
+    text-decoration: underline;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;

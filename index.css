@@ -837,6 +837,14 @@ a {
     color-scheme: dark;
 }
 
+/* The select's white text colour cascades into the native popup's
+   <option> rows, which render on a white background - invisible text.
+   These need their own explicit colours. */
+.company-section .input-group select option {
+    background-color: var(--navy-deep);
+    color: var(--white);
+}
+
 .company-section .input-group input::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }

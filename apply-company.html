@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job | UniPact</title>
+    <meta name="description" content="Post a paid job with UniPact and get matched with one verified, best-fit student. Escrow-secured, milestone-based.">
+    <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-link" aria-label="UniPact home">
+                <span class="logo-mark"><img src="logo.png" alt="" class="logo-mark-img"></span>
+                <span class="logo-wordmark"><span class="logo-uni">UNI</span><span class="logo-pact">PACT</span></span>
+            </a>
+            <a class="nav-btn" href="index.html">&larr; Back to Home</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="company-section">
+            <div class="container">
+                <div class="company-grid">
+                    <div class="company-pitch">
+                        <p class="eyebrow"><span class="eyebrow-dot"></span>For companies</p>
+                        <h2>Post the job. We match the talent.</h2>
+                        <p>Skip the applicant pile. Tell us the scope and the payout &mdash; UniPact matches one verified student who fits, and escrow handles the rest.</p>
+
+                        <ul class="feature-list">
+                            <li>Post a fixed-scope job with a fixed payout</li>
+                            <li>Get matched with one verified, best-fit student</li>
+                            <li>Pay per milestone, held in escrow until work is verified</li>
+                            <li>Walk away with a delivery report</li>
+                        </ul>
+                    </div>
+
+                    <div class="company-form">
+                        <div class="form-container">
+                            <h4>Company Application</h4>
+                            <form id="companyForm" class="custom-form">
+                                <input type="hidden" name="lead_type" value="Company_Leads">
+                                <div class="input-group">
+                                    <label for="companyName">Company Name</label>
+                                    <input type="text" id="companyName" name="company_name" required placeholder="Acme Corp">
+                                </div>
+                                <div class="input-group">
+                                    <label for="contactPerson">Contact Person</label>
+                                    <input type="text" id="contactPerson" name="contact_person" required placeholder="Jane Doe">
+                                </div>
+                                <div class="input-group">
+                                    <label for="corpEmail">Email Address</label>
+                                    <input type="email" id="corpEmail" name="corp_email" required placeholder="jane@acmecorp.com">
+                                </div>
+                                <div class="input-group">
+                                    <label for="scopeNeeded">Scope Needed</label>
+                                    <div class="select-wrapper">
+                                        <select id="scopeNeeded" name="scope_needed" required>
+                                            <option value="" disabled selected>Select a scope&hellip;</option>
+                                            <option value="Software Development">Software Development</option>
+                                            <option value="Digital Marketing">Digital Marketing</option>
+                                            <option value="Not sure yet">Not sure yet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">Post a Job</button>
+                                <p id="formStatus" style="display: none; margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: 600;"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="footer-tag">Impact Ledgers.</p>
+                    <a class="footer-email" href="mailto:unipact.my@gmail.com">unipact.my@gmail.com</a>
+                </div>
+                <p class="footer-copy">&copy; 2026 UniPact. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-N6kcIULA32Ltht_7F6PVnMCfneqplIV_iNR5uri7IlQawXbDk8Zstv8CvSyws9sd9g/exec";
+
+        document.getElementById('companyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            const formData = new FormData(form);
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+            formStatus.style.display = "none";
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                submitBtn.textContent = "Application Submitted!";
+                submitBtn.style.background = "#00AEEF";
+                formStatus.textContent = "Thank you! We received your application and will match your project soon.";
+                formStatus.style.color = "#00AEEF";
+                formStatus.style.display = "block";
+                form.reset();
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Post a Job";
+                }, 5000);
+            })
+            .catch(error => {
+                console.error("Submission error:", error);
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Post a Job";
+                formStatus.textContent = "Submission issue. Please email us directly at unipact.my@gmail.com";
+                formStatus.style.color = "#ff6b6b";
+                formStatus.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>

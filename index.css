@@ -159,12 +159,15 @@ a {
 }
 
 .nav-btn {
+    display: inline-flex;
+    align-items: center;
     background: transparent;
     border: none;
     color: var(--navy-deep);
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.9rem;
+    text-decoration: none;
     cursor: pointer;
     padding: 0.75rem 1.1rem;
     border-radius: 8px;
@@ -800,55 +803,69 @@ a {
     color: rgba(255, 255, 255, 0.68);
 }
 
-#companies-section .eyebrow {
+.company-section .eyebrow {
     color: var(--cyan);
 }
 
-#companies-section .feature-list {
+.company-section .feature-list {
     border-top-color: rgba(255, 255, 255, 0.14);
     border-bottom-color: rgba(255, 255, 255, 0.14);
 }
 
-#companies-section .feature-list li {
+.company-section .feature-list li {
     color: rgba(255, 255, 255, 0.75);
 }
 
-#companies-section .form-container h4 {
+.company-section .form-container h4 {
     color: rgba(255, 255, 255, 0.6);
 }
 
-#companies-section .input-group label {
+.company-section .input-group label {
     color: rgba(255, 255, 255, 0.85);
 }
 
-#companies-section .input-group input,
-#companies-section .input-group select {
+.company-section .input-group input,
+.company-section .input-group select {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.2);
     color: var(--white);
 }
 
-#companies-section .input-group input::placeholder {
+.company-section .input-group select {
+    /* Tells the browser to draw the native dropdown popup (which CSS
+       otherwise can't style) in dark colors instead of stark white. */
+    color-scheme: dark;
+}
+
+/* The select's white text colour cascades into the native popup's
+   <option> rows, which render on a white background - invisible text.
+   These need their own explicit colours. */
+.company-section .input-group select option {
+    background-color: var(--navy-deep);
+    color: var(--white);
+}
+
+.company-section .input-group input::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
 
-#companies-section .input-group input:focus,
-#companies-section .input-group select:focus {
+.company-section .input-group input:focus,
+.company-section .input-group select:focus {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--cyan);
 }
 
-#companies-section .select-wrapper::after {
+.company-section .select-wrapper::after {
     color: rgba(255, 255, 255, 0.6);
 }
 
-#companies-section .btn-primary {
+.company-section .btn-primary {
     background: var(--cyan);
     color: var(--navy-deep);
     border-color: var(--cyan);
 }
 
-#companies-section .btn-primary:hover {
+.company-section .btn-primary:hover {
     background: var(--white);
     border-color: var(--white);
 }
@@ -1138,6 +1155,52 @@ select {
 /* Footer */
 footer {
     padding: 3rem 0 2.5rem;
+}
+
+.footer-contacts {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.footer-contact-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.2rem;
+}
+
+.footer-contact-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact-email {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--cyan-deep);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 24px;
+}
+
+.footer-contact-email:hover {
+    text-decoration: underline;
 }
 
 .footer-content {

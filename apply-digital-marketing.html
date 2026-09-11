@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply &mdash; Digital Marketing & Video | UniPact</title>
-    <meta name="description" content="Apply as a Digital Marketing & Video student with UniPact. Get matched to real, paid work, milestone by milestone, escrow-secured.">
+    <title>Apply &mdash; Digital Marketing / Video | UniPact</title>
+    <meta name="description" content="Apply as a Digital Marketing / Video student with UniPact. Get matched to real, paid work, milestone by milestone, escrow-secured.">
     <link rel="icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
                 <div class="company-grid">
                     <div class="company-pitch">
                         <p class="eyebrow"><span class="eyebrow-dot"></span>For students &mdash; Digital Marketing / Video</p>
-                        <h2>Apply as a Digital Marketing &amp; Video student.</h2>
+                        <h2>Apply as a Digital Marketing / Video student.</h2>
                         <p>Tell us about your background. Once matched, you'll work real, paid jobs &mdash; milestone by milestone, escrow-secured.</p>
 
                         <ul class="feature-list">
@@ -41,16 +41,17 @@
 
                     <div class="company-form">
                         <div class="form-container">
-                            <h4>Student Application</h4>
+                            <h4>Digital Marketing / Video Application</h4>
                             <form id="studentForm" class="custom-form">
                                 <input type="hidden" name="lead_type" value="Student_DigitalMarketing">
+
+                                <div class="input-group">
+                                    <label for="studentEmail">Email Address</label>
+                                    <input type="email" id="studentEmail" name="student_email" required placeholder="you@example.com">
+                                </div>
                                 <div class="input-group">
                                     <label for="studentName">Full Name</label>
                                     <input type="text" id="studentName" name="student_name" required placeholder="Jane Doe">
-                                </div>
-                                <div class="input-group">
-                                    <label for="studentEmail">Email Address</label>
-                                    <input type="email" id="studentEmail" name="student_email" required placeholder="jane@student.edu.my">
                                 </div>
                                 <div class="input-group">
                                     <label for="studentPhone">Phone Number (WhatsApp)</label>
@@ -58,7 +59,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="institution">Where Do You Study?</label>
-                                    <input type="text" id="institution" name="institution" required placeholder="UniKL MIIT">
+                                    <input type="text" id="institution" name="institution" required placeholder="e.g. Universiti Malaya">
                                 </div>
                                 <div class="input-group">
                                     <label for="educationStatus">Education Status</label>
@@ -75,7 +76,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="course">What Course Do You Take?</label>
-                                    <input type="text" id="course" name="course" required placeholder="Bachelor of Mass Communication">
+                                    <input type="text" id="course" name="course" required placeholder="e.g. Mass Communication">
                                 </div>
                                 <div class="input-group">
                                     <label for="semester">Current Semester</label>
@@ -93,10 +94,51 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="input-group">
-                                    <label for="studentId">Student ID</label>
-                                    <input type="text" id="studentId" name="student_id" required placeholder="51234567">
+                                    <label id="skillsLabel">What are your skills?</label>
+                                    <div class="checkbox-grid" role="group" aria-labelledby="skillsLabel">
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Content Creation">Content Creation</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Copywriting">Copywriting</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Social Media Management">Social Media Management</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Video Editing">Video Editing</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="SEO">SEO</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Analytics">Analytics</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Paid Ads">Paid Ads</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Community Management">Community Management</label>
+                                        <label class="checkbox-item"><input type="checkbox" id="skillsOtherToggle">Others:</label>
+                                    </div>
+                                    <input type="text" id="skillsOther" name="skills_other" class="skills-other-input" placeholder="Type your other skills" hidden>
+                                    <p class="field-error" id="skillsError">Please select at least one skill, or type one under Others.</p>
                                 </div>
+
+                                <div class="input-group">
+                                    <label for="portfolioLink">Portfolio or Website Link <span class="optional-tag">Optional</span></label>
+                                    <input type="url" id="portfolioLink" name="portfolio_link" placeholder="https://yourportfolio.com">
+                                </div>
+                                <div class="input-group">
+                                    <label for="availability">Availability</label>
+                                    <div class="select-wrapper">
+                                        <select id="availability" name="availability" required>
+                                            <option value="" disabled selected>Select&hellip;</option>
+                                            <option value="Available now">Available now</option>
+                                            <option value="Available next month">Available next month</option>
+                                            <option value="Available next semester">Available next semester</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="experience">Describe a Project or Work You've Done <span class="optional-tag">Optional</span></label>
+                                    <textarea id="experience" name="experience" rows="3" placeholder="e.g. Created social media content for a local e-commerce brand, growing their Instagram following by 40% in 3 months."></textarea>
+                                </div>
+
+                                <div class="input-group">
+                                    <label class="consent-item">
+                                        <input type="checkbox" name="consent" value="Yes" required>
+                                        <span>I agree UniPact may share my profile with verified companies on the platform</span>
+                                    </label>
+                                </div>
+
                                 <button type="submit" id="submitBtn" class="btn btn-primary btn-block">Submit Application</button>
                                 <p id="formStatus" style="display: none; margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: 600;"></p>
                             </form>
@@ -122,11 +164,41 @@
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-N6kcIULA32Ltht_7F6PVnMCfneqplIV_iNR5uri7IlQawXbDk8Zstv8CvSyws9sd9g/exec";
 
-        document.getElementById('studentForm').addEventListener('submit', function(e) {
+        const form = document.getElementById('studentForm');
+        const skillsError = document.getElementById('skillsError');
+        const otherToggle = document.getElementById('skillsOtherToggle');
+        const otherInput = document.getElementById('skillsOther');
+
+        function hasAnySkill() {
+            return !!form.querySelector('input[name="skills"]:checked') || otherInput.value.trim() !== '';
+        }
+
+        otherToggle.addEventListener('change', function() {
+            otherInput.hidden = !otherToggle.checked;
+            if (otherToggle.checked) {
+                otherInput.focus();
+            } else {
+                otherInput.value = '';
+            }
+        });
+
+        form.addEventListener('input', function() {
+            if (hasAnySkill()) skillsError.style.display = 'none';
+        });
+
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            const form = this;
             const submitBtn = document.getElementById('submitBtn');
             const formStatus = document.getElementById('formStatus');
+
+            // HTML can't require "at least one of a checkbox group", so check it here.
+            if (!hasAnySkill()) {
+                skillsError.style.display = 'block';
+                skillsError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            skillsError.style.display = 'none';
+
             const formData = new FormData(form);
 
             submitBtn.disabled = true;
@@ -145,6 +217,7 @@
                 formStatus.style.color = "#00AEEF";
                 formStatus.style.display = "block";
                 form.reset();
+                otherInput.hidden = true;
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.textContent = "Submit Application";

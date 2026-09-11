@@ -981,6 +981,141 @@ select {
     cursor: pointer;
 }
 
+/* Textarea */
+.input-group textarea {
+    width: 100%;
+    min-height: 92px;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    color: var(--text-main);
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: var(--transition-fast);
+}
+
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+}
+
+.input-group textarea::placeholder {
+    color: rgba(10, 23, 72, 0.35);
+}
+
+/* Checkbox groups */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+    gap: 0.6rem;
+}
+
+.input-group .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.input-group .checkbox-item:hover {
+    border-color: var(--navy);
+}
+
+.input-group .checkbox-item:has(input:checked) {
+    border-color: var(--cyan);
+    background: rgba(0, 174, 239, 0.1);
+}
+
+/* Checkboxes must opt out of the full-width, 50px-tall input sizing above. */
+.input-group input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    min-height: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--cyan);
+    cursor: pointer;
+}
+
+.input-group .consent-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.consent-item input[type="checkbox"] {
+    margin-top: 0.15rem;
+}
+
+.skills-other-input {
+    margin-top: 0.6rem;
+}
+
+.field-error {
+    display: none;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #ff6b6b;
+}
+
+/* Dark form variants */
+.company-section .input-group textarea {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+.company-section .input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.company-section .input-group textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cyan);
+    box-shadow: none;
+}
+
+.company-section .input-group .checkbox-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.company-section .input-group .checkbox-item:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.company-section .input-group .checkbox-item:has(input:checked) {
+    border-color: var(--cyan);
+    background: rgba(0, 174, 239, 0.16);
+}
+
+.company-section .input-group input[type="checkbox"] {
+    background: none;
+    color-scheme: dark;
+}
+
+.company-section .input-group .consent-item {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 /* Proof of Work */
 .proof-section {
     position: relative;

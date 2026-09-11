@@ -94,10 +94,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="input-group">
-                                    <label for="studentId">Student ID</label>
-                                    <input type="text" id="studentId" name="student_id" required placeholder="e.g. 22001234">
-                                </div>
 
                                 <div class="input-group">
                                     <label id="skillsLabel">What are your skills?</label>
@@ -111,8 +107,10 @@
                                         <label class="checkbox-item"><input type="checkbox" name="skills" value="PHP">PHP</label>
                                         <label class="checkbox-item"><input type="checkbox" name="skills" value="Vue">Vue</label>
                                         <label class="checkbox-item"><input type="checkbox" name="skills" value="Databases">Databases</label>
+                                        <label class="checkbox-item"><input type="checkbox" id="skillsOtherToggle">Others:</label>
                                     </div>
-                                    <p class="field-error" id="skillsError">Please select at least one skill.</p>
+                                    <input type="text" id="skillsOther" name="skills_other" class="skills-other-input" placeholder="Type your other skills" hidden>
+                                    <p class="field-error" id="skillsError">Please select at least one skill, or type one under Others.</p>
                                 </div>
 
                                 <div class="input-group">
@@ -133,14 +131,13 @@
                                     <input type="url" id="portfolioLink" name="portfolio_link" placeholder="https://github.com/yourname">
                                 </div>
                                 <div class="input-group">
-                                    <label for="hoursPerWeek">Hours Available Per Week</label>
+                                    <label for="availability">Availability</label>
                                     <div class="select-wrapper">
-                                        <select id="hoursPerWeek" name="hours_per_week" required>
+                                        <select id="availability" name="availability" required>
                                             <option value="" disabled selected>Select&hellip;</option>
-                                            <option value="5-10 hours">5-10 hours</option>
-                                            <option value="10-20 hours">10-20 hours</option>
-                                            <option value="20-30 hours">20-30 hours</option>
-                                            <option value="30+ hours">30+ hours</option>
+                                            <option value="Available now">Available now</option>
+                                            <option value="Available next month">Available next month</option>
+                                            <option value="Available next semester">Available next semester</option>
                                         </select>
                                     </div>
                                 </div>
@@ -183,11 +180,24 @@
 
         const form = document.getElementById('studentForm');
         const skillsError = document.getElementById('skillsError');
+        const otherToggle = document.getElementById('skillsOtherToggle');
+        const otherInput = document.getElementById('skillsOther');
 
-        form.addEventListener('change', function(e) {
-            if (e.target.name === 'skills' && form.querySelector('input[name="skills"]:checked')) {
-                skillsError.style.display = 'none';
+        function hasAnySkill() {
+            return !!form.querySelector('input[name="skills"]:checked') || otherInput.value.trim() !== '';
+        }
+
+        otherToggle.addEventListener('change', function() {
+            otherInput.hidden = !otherToggle.checked;
+            if (otherToggle.checked) {
+                otherInput.focus();
+            } else {
+                otherInput.value = '';
             }
+        });
+
+        form.addEventListener('input', function() {
+            if (hasAnySkill()) skillsError.style.display = 'none';
         });
 
         form.addEventListener('submit', function(e) {
@@ -196,7 +206,7 @@
             const formStatus = document.getElementById('formStatus');
 
             // HTML can't require "at least one of a checkbox group", so check it here.
-            if (!form.querySelector('input[name="skills"]:checked')) {
+            if (!hasAnySkill()) {
                 skillsError.style.display = 'block';
                 skillsError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
@@ -221,6 +231,7 @@
                 formStatus.style.color = "#00AEEF";
                 formStatus.style.display = "block";
                 form.reset();
+                otherInput.hidden = true;
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.textContent = "Submit Application";

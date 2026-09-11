@@ -41,16 +41,17 @@
 
                     <div class="company-form">
                         <div class="form-container">
-                            <h4>Student Application</h4>
+                            <h4>Software Developer Application</h4>
                             <form id="studentForm" class="custom-form">
                                 <input type="hidden" name="lead_type" value="Student_SoftwareDev">
-                                <div class="input-group">
-                                    <label for="studentName">Full Name</label>
-                                    <input type="text" id="studentName" name="student_name" required placeholder="John Doe">
-                                </div>
+
                                 <div class="input-group">
                                     <label for="studentEmail">Email Address</label>
-                                    <input type="email" id="studentEmail" name="student_email" required placeholder="john@student.edu.my">
+                                    <input type="email" id="studentEmail" name="student_email" required placeholder="you@example.com">
+                                </div>
+                                <div class="input-group">
+                                    <label for="studentName">Full Name</label>
+                                    <input type="text" id="studentName" name="student_name" required placeholder="Jane Doe">
                                 </div>
                                 <div class="input-group">
                                     <label for="studentPhone">Phone Number (WhatsApp)</label>
@@ -58,7 +59,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="institution">Where Do You Study?</label>
-                                    <input type="text" id="institution" name="institution" required placeholder="UniKL MIIT">
+                                    <input type="text" id="institution" name="institution" required placeholder="e.g. Universiti Malaya">
                                 </div>
                                 <div class="input-group">
                                     <label for="educationStatus">Education Status</label>
@@ -75,7 +76,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="course">What Course Do You Take?</label>
-                                    <input type="text" id="course" name="course" required placeholder="Bachelor of Computer Science">
+                                    <input type="text" id="course" name="course" required placeholder="e.g. Computer Science">
                                 </div>
                                 <div class="input-group">
                                     <label for="semester">Current Semester</label>
@@ -95,8 +96,66 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="studentId">Student ID</label>
-                                    <input type="text" id="studentId" name="student_id" required placeholder="51234567">
+                                    <input type="text" id="studentId" name="student_id" required placeholder="e.g. 22001234">
                                 </div>
+
+                                <div class="input-group">
+                                    <label id="skillsLabel">What are your skills?</label>
+                                    <div class="checkbox-grid" role="group" aria-labelledby="skillsLabel">
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="React">React</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Node.js">Node.js</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Python">Python</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Django">Django</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Flutter">Flutter</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Java">Java</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="PHP">PHP</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Vue">Vue</label>
+                                        <label class="checkbox-item"><input type="checkbox" name="skills" value="Databases">Databases</label>
+                                    </div>
+                                    <p class="field-error" id="skillsError">Please select at least one skill.</p>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="projectType">Preferred Project Type <span class="optional-tag">Optional</span></label>
+                                    <div class="select-wrapper">
+                                        <select id="projectType" name="project_type">
+                                            <option value="" disabled selected>Select&hellip;</option>
+                                            <option value="Frontend">Frontend</option>
+                                            <option value="Backend">Backend</option>
+                                            <option value="Full-stack">Full-stack</option>
+                                            <option value="Mobile">Mobile</option>
+                                            <option value="No preference">No preference</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="portfolioLink">GitHub Profile or Portfolio Link <span class="optional-tag">Optional</span></label>
+                                    <input type="url" id="portfolioLink" name="portfolio_link" placeholder="https://github.com/yourname">
+                                </div>
+                                <div class="input-group">
+                                    <label for="hoursPerWeek">Hours Available Per Week</label>
+                                    <div class="select-wrapper">
+                                        <select id="hoursPerWeek" name="hours_per_week" required>
+                                            <option value="" disabled selected>Select&hellip;</option>
+                                            <option value="5-10 hours">5-10 hours</option>
+                                            <option value="10-20 hours">10-20 hours</option>
+                                            <option value="20-30 hours">20-30 hours</option>
+                                            <option value="30+ hours">30+ hours</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="experience">Describe a Project or Work You've Done <span class="optional-tag">Optional</span></label>
+                                    <textarea id="experience" name="experience" rows="3" placeholder="e.g. Built a full-stack todo app with React and Node.js, deployed on Vercel."></textarea>
+                                </div>
+
+                                <div class="input-group">
+                                    <label class="consent-item">
+                                        <input type="checkbox" name="consent" value="Yes" required>
+                                        <span>I agree UniPact may share my profile with verified companies on the platform</span>
+                                    </label>
+                                </div>
+
                                 <button type="submit" id="submitBtn" class="btn btn-primary btn-block">Submit Application</button>
                                 <p id="formStatus" style="display: none; margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: 600;"></p>
                             </form>
@@ -122,11 +181,28 @@
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-N6kcIULA32Ltht_7F6PVnMCfneqplIV_iNR5uri7IlQawXbDk8Zstv8CvSyws9sd9g/exec";
 
-        document.getElementById('studentForm').addEventListener('submit', function(e) {
+        const form = document.getElementById('studentForm');
+        const skillsError = document.getElementById('skillsError');
+
+        form.addEventListener('change', function(e) {
+            if (e.target.name === 'skills' && form.querySelector('input[name="skills"]:checked')) {
+                skillsError.style.display = 'none';
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            const form = this;
             const submitBtn = document.getElementById('submitBtn');
             const formStatus = document.getElementById('formStatus');
+
+            // HTML can't require "at least one of a checkbox group", so check it here.
+            if (!form.querySelector('input[name="skills"]:checked')) {
+                skillsError.style.display = 'block';
+                skillsError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            skillsError.style.display = 'none';
+
             const formData = new FormData(form);
 
             submitBtn.disabled = true;

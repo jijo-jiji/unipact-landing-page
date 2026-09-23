@@ -1893,3 +1893,568 @@ footer {
     }
 }
 
+/* Client Landing Page Styles */
+.client-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(11, 30, 99, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy-deep);
+}
+
+.comparison-section {
+    padding: 5.5rem 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 900px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.comparison-card {
+    background: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.comparison-card.highlight {
+    background: var(--navy-deep);
+    color: var(--white);
+    border-color: var(--cyan);
+    box-shadow: 0 12px 36px rgba(11, 30, 99, 0.16);
+}
+
+.comparison-card.highlight h3,
+.comparison-card.highlight .comparison-price {
+    color: var(--white);
+}
+
+.comparison-card.highlight p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.comparison-card.highlight .comparison-list li {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.comparison-badge {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--cyan);
+    color: var(--navy-deep);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+}
+
+.comparison-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.comparison-price {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 1rem 0 0.5rem;
+}
+
+.comparison-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.comparison-list li {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.capabilities-section {
+    padding: 5.5rem 0;
+    background: var(--bg);
+}
+
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+    .capability-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.capability-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2.25rem 2rem;
+    box-shadow: 0 4px 14px rgba(10, 23, 72, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.capability-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.capability-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.capability-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.tech-tag {
+    background: rgba(11, 30, 99, 0.06);
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+}
+
+.how-it-works-section {
+    padding: 5.5rem 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.step-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+    .step-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .step-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.step-card {
+    background: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    position: relative;
+}
+
+.step-number {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+    line-height: 1;
+}
+
+.step-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Malaysian SME Landing Styles */
+.persona-section {
+    padding: 5.5rem 0;
+    background: var(--bg);
+}
+
+.persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+    .persona-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.persona-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.25rem 2rem;
+    box-shadow: 0 4px 18px rgba(10, 23, 72, 0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.persona-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(10, 23, 72, 0.08);
+}
+
+.persona-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.persona-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 174, 239, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.persona-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cyan-deep);
+}
+
+.persona-card h3 {
+    font-size: 1.25rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.75rem;
+}
+
+.persona-situation {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.persona-block {
+    margin-bottom: 1.25rem;
+}
+
+.persona-block-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.persona-block.pain .persona-block-title {
+    color: #E63946;
+}
+
+.persona-block.solution .persona-block-title {
+    color: var(--navy);
+}
+
+.persona-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.persona-list li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.persona-block.pain .persona-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #E63946;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.persona-solution-box {
+    margin-top: auto;
+    background: rgba(0, 174, 239, 0.08);
+    border: 1px solid rgba(0, 174, 239, 0.25);
+    border-radius: 10px;
+    padding: 1.15rem;
+}
+
+.persona-solution-box p {
+    font-size: 0.88rem;
+    color: var(--navy-deep);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Objection Killer Matrix */
+.objection-section {
+    padding: 5.5rem 0;
+    background: var(--navy-deep);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.6px);
+    background-size: 24px 24px;
+    color: var(--white);
+    border-top: 3px solid var(--cyan);
+    border-bottom: 3px solid var(--cyan);
+}
+
+.objection-section .eyebrow {
+    color: var(--cyan);
+}
+
+.objection-section .section-title {
+    color: var(--white);
+}
+
+.objection-section .proof-copy {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.objection-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 3rem;
+}
+
+.objection-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1.3fr;
+    gap: 1.5rem;
+    align-items: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.objection-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--cyan);
+}
+
+@media (max-width: 850px) {
+    .objection-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.objection-client {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.objection-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ff8a8a;
+}
+
+.objection-quote {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.objection-arrow {
+    color: var(--cyan);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+@media (max-width: 850px) {
+    .objection-arrow {
+        display: none;
+    }
+}
+
+.objection-unipact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.objection-unipact-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cyan);
+}
+
+.objection-ans {
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}
+
+/* Package Grid */
+.package-section {
+    padding: 5.5rem 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.package-card {
+    background: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.package-card.highlight {
+    background: var(--white);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 12px 32px rgba(0, 174, 239, 0.12);
+}
+
+.package-popular {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--cyan);
+    color: var(--navy-deep);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+}
+
+.package-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.package-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.package-ideal {
+    font-size: 0.8rem;
+    color: var(--navy);
+    font-weight: 600;
+    background: rgba(11, 30, 99, 0.05);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.package-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.package-list li {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.package-list li span.check {
+    color: var(--cyan-deep);
+    font-weight: 800;
+}
+
+
+

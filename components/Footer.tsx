@@ -45,7 +45,10 @@ export default function Footer({ variant = "full" }: { variant?: "full" | "simpl
           <div className="footer-legal">
             <p className="footer-copy">&copy; 2026 UniPact. All rights reserved.</p>
             <div className="footer-links">
-              <Link href="/privacy-policy">Privacy Policy</Link> &bull; <Link href="/terms">Terms of Service</Link>
+              <Link href="/sme">For Malaysian SMEs</Link> &bull;{" "}
+              <Link href="/clients">Global Clients</Link> &bull;{" "}
+              <Link href="/privacy-policy">Privacy Policy</Link> &bull;{" "}
+              <Link href="/terms">Terms of Service</Link>
             </div>
           </div>
         </div>

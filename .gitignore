@@ -8,3 +8,16 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 npm-debug.log*
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Sales/prospect data — must stay out of this public repo
+leads/
+
+# Mascot source art — not served by the site; kept outside git
+assets/
+src/
+dragon-coding.jpg

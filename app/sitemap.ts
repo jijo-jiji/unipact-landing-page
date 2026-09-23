@@ -6,6 +6,8 @@ const BASE_URL = "https://www.unipact.my";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
+    "/clients",
+    "/sme",
     "/apply-company",
     "/apply-software-developer",
     "/apply-digital-marketing",

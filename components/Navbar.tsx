@@ -81,9 +81,12 @@ export default function Navbar({
           </span>
         </Link>
         <nav className={`nav-links${navOpen ? " open" : ""}`} id="navLinks">
-          <button className="nav-btn" onClick={() => handleScrollTo("companies-section")}>
-            For Companies
-          </button>
+          <Link className="nav-btn" href="/sme">
+            For SMEs &amp; Brands
+          </Link>
+          <Link className="nav-btn" href="/clients">
+            Global Clients
+          </Link>
           <div
             className={`nav-dropdown${dropdownOpen ? " open" : ""}`}
             id="studentDropdownWrapper"

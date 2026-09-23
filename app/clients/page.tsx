@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HomeSections from "@/components/HomeSections";
+import ClientLandingSections from "@/components/ClientLandingSections";
+import { client } from "@/lib/sanity/client";
+import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
 
-const TITLE = "UniPact | Paid Student Work, Matched and Verified";
+const TITLE = "Hire Vetted Remote Developers & Creators | UniPact for Global Clients";
 const DESCRIPTION =
-  "UniPact matches companies with verified students for paid, milestone-based work in Software Development and Digital Marketing. Escrow-secured. Currently in closed beta.";
+  "Outsource software development and video editing to the top 1% vetted university talent in Malaysia. Save 70% vs Western agency rates. 100% milestone escrow-secured.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://www.unipact.my/",
+    canonical: "https://www.unipact.my/clients",
   },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    url: "https://www.unipact.my/",
+    url: "https://www.unipact.my/clients",
     images: ["https://www.unipact.my/logo.png"],
   },
   twitter: {
@@ -33,22 +35,25 @@ const jsonLd = {
       name: "UniPact",
       url: "https://www.unipact.my/",
       logo: "https://www.unipact.my/logo.png",
-      description: "UniPact matches companies with verified students for paid, milestone-based work.",
+      description: "Milestone-based remote talent matching platform.",
     },
     {
-      "@type": "WebSite",
-      name: "UniPact",
-      url: "https://www.unipact.my/",
+      "@type": "Service",
+      name: "Cross-Border Milestone Talent Matching",
+      provider: {
+        "@type": "Organization",
+        name: "UniPact",
+      },
+      serviceType: "Software Development & Video Production",
+      areaServed: ["US", "GB", "SG", "AU", "Global"],
+      description: DESCRIPTION,
     },
   ],
 };
 
-import { client } from "@/lib/sanity/client";
-import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
+export const revalidate = 60; // revalidate every minute
 
-export const revalidate = 60; // revalidate at most once every minute
-
-export default async function HomePage() {
+export default async function ClientsPage() {
   let caseStudies: CaseStudy[] = [];
   try {
     caseStudies = await client.fetch(CASE_STUDIES_QUERY);
@@ -63,9 +68,8 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar variant="full" />
-      <HomeSections caseStudies={caseStudies} />
+      <ClientLandingSections caseStudies={caseStudies} />
       <Footer variant="full" />
     </>
   );
 }
-

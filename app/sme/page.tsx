@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HomeSections from "@/components/HomeSections";
+import SmeLandingSections from "@/components/SmeLandingSections";
+import { client } from "@/lib/sanity/client";
+import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
 
-const TITLE = "UniPact | Paid Student Work, Matched and Verified";
+const TITLE = "Viral Short-Form Video & Tech for Malaysian SMEs | UniPact";
 const DESCRIPTION =
-  "UniPact matches companies with verified students for paid, milestone-based work in Software Development and Digital Marketing. Escrow-secured. Currently in closed beta.";
+  "Access verified Malaysian university creators and developers. On-site shoots, 48-72h turnaround, viral TikTok & Reels packages without expensive agency retainers. SSM: 202603205508.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://www.unipact.my/",
+    canonical: "https://www.unipact.my/sme",
   },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    url: "https://www.unipact.my/",
+    url: "https://www.unipact.my/sme",
     images: ["https://www.unipact.my/logo.png"],
   },
   twitter: {
@@ -33,22 +35,25 @@ const jsonLd = {
       name: "UniPact",
       url: "https://www.unipact.my/",
       logo: "https://www.unipact.my/logo.png",
-      description: "UniPact matches companies with verified students for paid, milestone-based work.",
+      description: "University creative and tech talent matching platform in Malaysia.",
     },
     {
-      "@type": "WebSite",
-      name: "UniPact",
-      url: "https://www.unipact.my/",
+      "@type": "Service",
+      name: "Short-Form Video Production & Tech Bounties for Malaysian SMEs",
+      provider: {
+        "@type": "Organization",
+        name: "UniPact",
+      },
+      serviceType: "Video Production, Social Media Marketing & Software Development",
+      areaServed: "Malaysia",
+      description: DESCRIPTION,
     },
   ],
 };
 
-import { client } from "@/lib/sanity/client";
-import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
+export const revalidate = 60; // revalidate every minute
 
-export const revalidate = 60; // revalidate at most once every minute
-
-export default async function HomePage() {
+export default async function SmePage() {
   let caseStudies: CaseStudy[] = [];
   try {
     caseStudies = await client.fetch(CASE_STUDIES_QUERY);
@@ -63,9 +68,8 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar variant="full" />
-      <HomeSections caseStudies={caseStudies} />
+      <SmeLandingSections caseStudies={caseStudies} />
       <Footer variant="full" />
     </>
   );
 }
-

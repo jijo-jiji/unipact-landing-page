@@ -5,6 +5,8 @@ import { ReactNode } from "react";
 import { scrollToSectionId } from "./Navbar";
 import CompanyApplicationForm from "./CompanyApplicationForm";
 
+import type { CaseStudy } from "@/lib/sanity/queries";
+
 export default function HomeSections({
   headlineDesktop = (
     <>
@@ -22,10 +24,13 @@ export default function HomeSections({
       Pay for results.
     </>
   ),
+  caseStudies = [],
 }: {
   headlineDesktop?: ReactNode;
   headlineMobile?: ReactNode;
+  caseStudies?: CaseStudy[];
 }) {
+  const primaryStudy = caseStudies && caseStudies.length > 0 ? caseStudies[0] : null;
   return (
     <main>
       {/* Hero */}
@@ -109,38 +114,57 @@ export default function HomeSections({
       <section id="proof-section" className="proof-section">
         <div className="container">
           <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Proof of work &mdash; Bounty #UP-001
+            <span className="eyebrow-dot"></span>
+            {primaryStudy?.client
+              ? `Proof of work — ${primaryStudy.client}`
+              : "Proof of work — Bounty #UP-001"}
           </p>
           <h2 className="section-title">
-            A working sales CRM.
-            <br />
-            Built and verified in 7 days.
+            {primaryStudy?.title ? (
+              primaryStudy.title
+            ) : (
+              <>
+                A working sales CRM.
+                <br />
+                Built and verified in 7 days.
+              </>
+            )}
           </h2>
           <p className="proof-copy">
-            A UniPact team was matched to a financial consulting agency that needed a sales CRM built from
-            scratch. The brief was scoped, the milestones were set, and the work was delivered and verified
-            against the original brief &mdash; escrow released on completion.
+            {primaryStudy?.summary ||
+              "A UniPact team was matched to a financial consulting agency that needed a sales CRM built from scratch. The brief was scoped, the milestones were set, and the work was delivered and verified against the original brief — escrow released on completion."}
           </p>
 
           <div className="stat-bar">
-            <div className="stat">
-              <p className="stat-value">7</p>
-              <p className="stat-label">Days, brief to live dashboard</p>
-            </div>
-            <div className="stat">
-              <p className="stat-value">
-                15<span className="stat-unit">hrs</span>
-              </p>
-              <p className="stat-label">Saved per week, per agent</p>
-            </div>
-            <div className="stat">
-              <p className="stat-value">200</p>
-              <p className="stat-label">Agents on the new workflow</p>
-            </div>
-            <div className="stat">
-              <p className="stat-value">RM3,000</p>
-              <p className="stat-label">Saved per year on CRM licences</p>
-            </div>
+            {primaryStudy?.metrics && primaryStudy.metrics.length > 0 ? (
+              primaryStudy.metrics.map((metric, idx) => (
+                <div key={idx} className="stat">
+                  <p className="stat-value">{metric.value}</p>
+                  <p className="stat-label">{metric.label}</p>
+                </div>
+              ))
+            ) : (
+              <>
+                <div className="stat">
+                  <p className="stat-value">7</p>
+                  <p className="stat-label">Days, brief to live dashboard</p>
+                </div>
+                <div className="stat">
+                  <p className="stat-value">
+                    15<span className="stat-unit">hrs</span>
+                  </p>
+                  <p className="stat-label">Saved per week, per agent</p>
+                </div>
+                <div className="stat">
+                  <p className="stat-value">200</p>
+                  <p className="stat-label">Agents on the new workflow</p>
+                </div>
+                <div className="stat">
+                  <p className="stat-value">RM3,000</p>
+                  <p className="stat-label">Saved per year on CRM licences</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>

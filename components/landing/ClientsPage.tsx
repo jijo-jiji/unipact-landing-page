@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ui from "@/components/site/ui.module.css";
@@ -6,6 +8,7 @@ import home from "@/components/home/home.module.css";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
 import { CLIENTS_FAQS as FAQS } from "@/lib/faqs";
+import { CLIPS, clipPoster } from "@/lib/clips";
 
 const OPTIONS = [
   {
@@ -74,6 +77,9 @@ const CAPABILITIES = [
     tags: ["Web scraping", "OpenAI / Claude APIs", "CRM pipelines", "Automated invoicing", "Data pipelines"],
   },
 ];
+
+// A glimpse of the example videos; the full gallery, with sound, is on /sme.
+const VIDEO_PREVIEW = [CLIPS.voxPop, CLIPS.podcastEdit, CLIPS.healthExplainer, CLIPS.interview];
 
 const STEPS = [
   { title: "Send your brief", text: "Describe the project, features, timeline and milestone budget." },
@@ -190,6 +196,18 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
               </figcaption>
             </figure>
           )}
+          <Link href="/sme#videos" className={styles.videoPreview}>
+            <span className={styles.videoPreviewText}>
+              <strong>See our creators&rsquo; video work</strong>
+              <span>Events, brands, motion graphics and documentaries, filmed and edited by our students.</span>
+            </span>
+            <span className={styles.videoPreviewStills} aria-hidden="true">
+              {VIDEO_PREVIEW.map(({ name }) => (
+                <Image key={name} src={clipPoster(name)} alt="" width={450} height={800} sizes="44px" />
+              ))}
+            </span>
+            <ArrowRight size={20} aria-hidden="true" className={styles.videoPreviewArrow} />
+          </Link>
         </div>
       </section>
 

@@ -7,7 +7,7 @@ import styles from "./clip.module.css";
 // Every clip on the page, so turning the sound on for one can mute the rest.
 const clips = new Set<HTMLVideoElement>();
 
-// A short looping clip in a phone frame. It plays muted while at least half of it is on
+// A short looping clip in a phone frame (or a screen frame when wide). It plays muted while at least half of it is on
 // screen and pauses when scrolled away; nothing is downloaded until then. Tapping the
 // video pauses it, and the speaker button turns the sound on. With reduced motion or
 // data saver on, it waits for a tap instead of playing by itself.
@@ -16,6 +16,7 @@ export default function CreatorClip({
   poster,
   title,
   description,
+  wide = false,
 }: {
   src: string;
   poster: string;
@@ -23,6 +24,8 @@ export default function CreatorClip({
   title: string;
   /** What the clip shows, for screen readers. */
   description: string;
+  /** A landscape 16:9 clip in a screen frame, instead of a phone. */
+  wide?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   // Set when the viewer pauses the clip, so scrolling back doesn't restart it.
@@ -86,14 +89,14 @@ export default function CreatorClip({
   }
 
   return (
-    <div className={styles.frame}>
+    <div className={`${styles.frame} ${wide ? styles.frameWide : ""}`}>
       <video
         ref={ref}
         className={styles.video}
         src={src}
         poster={poster}
-        width={450}
-        height={800}
+        width={wide ? 800 : 450}
+        height={wide ? 450 : 800}
         preload="none"
         muted
         loop

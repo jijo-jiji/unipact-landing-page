@@ -10,6 +10,11 @@
     background: var(--navy-deep);
 }
 
+.frameWide {
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+}
+
 .video {
     display: block;
     width: 100%;
@@ -126,6 +131,10 @@
     .frame {
         border-width: 7px;
         border-radius: 30px;
+    }
+
+    .frameWide {
+        border-radius: 18px;
     }
 
     .sound {

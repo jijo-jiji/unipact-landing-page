@@ -2,10 +2,12 @@ import Image from "next/image";
 import ui from "@/components/site/ui.module.css";
 import home from "@/components/home/home.module.css";
 import CreatorClip from "./CreatorClip";
+import ClipGallery from "./ClipGallery";
 import PersonaTabs, { type Persona } from "./PersonaTabs";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
 import { SME_FAQS as FAQS } from "@/lib/faqs";
+import { CLIPS, CLIP_GROUPS, clipPoster, clipSrc } from "@/lib/clips";
 
 const PERSONAS: Persona[] = [
   {
@@ -70,33 +72,24 @@ const OBJECTIONS = [
   },
 ];
 
-// The team's rate card: three monthly tiers, priced in ringgit. Silver is the one shown
-// in navy, as the middle option.
-// Raziq Syahmee's own client work (the clients agreed to it being shown here), cut to
-// 15-second loops at 450x800. Files are public/videos/creator-<name>.mp4 and .webp.
-const CLIPS = [
-  {
-    name: "event-promo",
-    title: "Event promo with motion graphics",
-    description: "A host introduces a community event, with animated scenes and shots of the crowd.",
-  },
-  {
-    name: "interview",
-    title: "Interview with captions",
-    description: "A rider at an equestrian centre talks about horse riding, with Malay captions.",
-  },
-  {
-    name: "stables",
-    title: "Brand video on a professional camera",
-    description: "A riding instructor shows the stables, filmed on a professional camera.",
-  },
-  {
-    name: "campus-skit",
-    title: "Event promo skit",
-    description: "A short comedy skit, with captions, promoting a university event.",
-  },
+// Two of the videos side by side, as on the team's rate card: Bronze is shot on an iPhone,
+// Silver and Gold on a professional camera with a microphone and lighting.
+const CAMERAS = [
+  { clip: CLIPS.butcher, label: "iPhone", tier: "Bronze" },
+  { clip: CLIPS.stables, label: "Professional camera", tier: "Silver and Gold" },
 ];
 
+// What sets Gold apart, from the rate card's Gold page.
+const GOLD_EDITING = ["Captions", "Motion graphics", "B-roll", "Sound design"];
+const GOLD_BEST_FOR = [
+  "Videos that need a lot of explaining",
+  "Keeping viewers and clients engaged to the end",
+  "Making your product or service look trustworthy and premium",
+  "Longer watch time and retention, which social media algorithms reward",
+];
+
+// The team's rate card: three monthly tiers, priced in ringgit. Silver is the one shown
+// in navy, as the middle option.
 const PACKAGES = [
   {
     name: "Bronze",
@@ -133,7 +126,7 @@ const PACKAGES = [
   {
     name: "Gold",
     price: "2,500",
-    desc: "The most videos, with premium production and storytelling scripts.",
+    desc: "Heavy editing across multiple kinds of content, with storytelling scripts.",
     bestFor: "For Shopee and TikTok Shop sellers",
     points: [
       "16 videos a month",
@@ -141,6 +134,7 @@ const PACKAGES = [
       "4 videos a week",
       "Detailed storytelling scripts and captions",
       "Premium production and graphics",
+      "Advanced editing: captions, motion graphics, B-roll and sound design",
       "A/B testing with Instagram trial reels",
       "Professional camera, microphone and lighting",
     ],
@@ -220,19 +214,34 @@ export default function SmePage() {
           <div className={ui.head}>
             <h2 className={ui.title}>What the videos look like</h2>
             <p className={`${ui.lead} ${styles.leadOnNavy}`}>
-              Client work by Raziq Syahmee, one of our Digital Marketing talents.
+              Client work by Raziq Syahmee, one of our Digital Marketing talents, across events, brands, motion
+              graphics and wide-format video.
             </p>
           </div>
-          <ul className={styles.clips}>
-            {CLIPS.map(({ name, title, description }) => (
-              <li key={name}>
+          <ClipGallery groups={CLIP_GROUPS} />
+        </div>
+      </section>
+
+      <section id="cameras" className={ui.section}>
+        <div className={`container ${styles.split}`}>
+          <div className={styles.splitHead}>
+            <h2 className={ui.title}>iPhone or professional camera?</h2>
+            <p className={ui.lead}>
+              Bronze is filmed on an iPhone: quick, natural and right at home on TikTok. Silver and Gold bring a
+              professional camera, microphone and lighting, for a sharper, more premium look.
+            </p>
+          </div>
+          <ul className={styles.cameras}>
+            {CAMERAS.map(({ clip, label, tier }) => (
+              <li key={label}>
                 <CreatorClip
-                  src={`/videos/creator-${name}.mp4`}
-                  poster={`/videos/creator-${name}.webp`}
-                  title={title}
-                  description={description}
+                  src={clipSrc(clip.name)}
+                  poster={clipPoster(clip.name)}
+                  title={`${label}: ${clip.title}`}
+                  description={clip.description}
                 />
-                <p className={styles.clipCaption}>{title}</p>
+                <p className={styles.cameraLabel}>{label}</p>
+                <p className={styles.cameraTier}>{tier}</p>
               </li>
             ))}
           </ul>
@@ -255,6 +264,11 @@ export default function SmePage() {
                 <p className={styles.packageDesc}>{desc}</p>
                 <p className={styles.packageFor}>{bestFor}</p>
                 <DotList items={points} />
+                {name === "Gold" ? (
+                  <a href="#gold-editing" className={styles.packageLink}>
+                    See what Gold editing looks like
+                  </a>
+                ) : null}
                 <a
                   href="#contact"
                   className={`${ui.btn} ${ui.btnBlock} ${featured ? ui.btnCyan : ui.btnSecondary}`}
@@ -263,6 +277,28 @@ export default function SmePage() {
                 </a>
               </div>
             ))}
+          </div>
+
+          <div id="gold-editing" className={styles.gold}>
+            <div className={styles.goldClip}>
+              <CreatorClip
+                src={clipSrc(CLIPS.podcastEdit.name)}
+                poster={clipPoster(CLIPS.podcastEdit.name)}
+                title={CLIPS.podcastEdit.title}
+                description={CLIPS.podcastEdit.description}
+              />
+            </div>
+            <div>
+              <h3 className={styles.goldTitle}>Gold: heavy editing, multiple kinds of content</h3>
+              <p className={styles.panelText}>
+                Gold videos get premium production, graphics and a detailed storytelling script, then go through A/B
+                testing with Instagram trial reels.
+              </p>
+              <p className={styles.panelLabel}>Advanced editing</p>
+              <DotList items={GOLD_EDITING} />
+              <p className={styles.panelLabel}>Best for</p>
+              <DotList items={GOLD_BEST_FOR} />
+            </div>
           </div>
         </div>
       </section>
